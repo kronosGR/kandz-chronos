@@ -1,0 +1,25 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.content-timer {
+  display: flex;
+  margin: 20px 0;
+}
+
+.content-timer > * {
+  margin: 10px;
+}
+
+button {
+  width: 100px;
+}
+
+#timer {
+  border: 1px solid white;
+  padding: 0 10px;
+}
