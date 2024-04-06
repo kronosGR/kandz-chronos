@@ -6,6 +6,8 @@ function App() {
 
   const [timer, setTimer] = useState(0)
   const [isRunning, setIsRunning] = useState(false)
+  const [timerList, setTimerList] = useState([])
+  const [list, setList] = useState(null)
 
   useEffect(() => {
     let intervalId
@@ -17,19 +19,40 @@ function App() {
     return () => clearInterval(intervalId)
   }, [isRunning, timer])
 
+  useEffect(() => {
+    let list = () => (
+      <>
+        {timerList.map((el, index) => (
+          <TimerToString newTimer={el} key={index} />
+        ))}
+      </>
+    )
+    setList(list)
+  }, [timerList])
+
   const startStop = () => {
     setIsRunning(!isRunning)
+    if (isRunning) {
+      setTimerList([...timerList, timer])
+    }
   }
 
   const reset = () => {
     setTimer(0)
   }
 
-  const TimerToString = () => {
-    const hours = Math.floor(timer / 360000)
-    const mins = Math.floor((timer % 360000) / 6000)
-    const secs = Math.floor((timer % 6000) / 100)
-    const ms = timer % 100
+  const emptyList = () => {
+    setList(null)
+    setTimerList([])
+  }
+
+  const TimerToString = ({ newTimer = 0 }) => {
+    let time = 0
+    time = newTimer == 0 ? (time = timer) : (time = newTimer)
+    const hours = Math.floor(time / 360000)
+    const mins = Math.floor((time % 360000) / 6000)
+    const secs = Math.floor((time % 6000) / 100)
+    const ms = time % 100
 
     return (
       <div>
@@ -43,17 +66,26 @@ function App() {
     <div className="content">
       <h1 id="title">Chronos</h1>
       <div className="content-timer">
-        <button type="button" id="start-stop" onClick={startStop}>
+        <button type="button" onClick={startStop}>
           {isRunning ? 'Stop' : 'Start'}
         </button>
         <div id="timer">
           <TimerToString />
         </div>
-        <button type="button" id="reset-lap" onClick={reset}>
+        <button type="button" onClick={reset} disabled={isRunning}>
           Reset
         </button>
       </div>
-      <div className="laps"></div>
+      <div className="timers">
+        <div>
+          {list}
+          {timerList.length > 0 && (
+            <button type="button" onClick={emptyList} id="empty-list">
+              Empty List
+            </button>
+          )}
+        </div>
+      </div>
     </div>
   )
 }

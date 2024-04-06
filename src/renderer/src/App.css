@@ -17,9 +17,24 @@
 
 button {
   width: 100px;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 #timer {
   border: 1px solid white;
   padding: 0 10px;
+  display: flex;
+  align-items: center;
+}
+
+#empty-list {
+  margin-top: 10px;
+  background-color: red;
+  color: white;
+}
+
+.timers {
+  text-align: center;
 }
