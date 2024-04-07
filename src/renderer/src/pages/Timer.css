@@ -18,3 +18,7 @@
 .group-item > [type='number']::-webkit-outer-spin-button {
   opacity: 1;
 }
+
+.buttons > button {
+  width: 120px;
+}
