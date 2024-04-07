@@ -47,6 +47,7 @@ const StopWatch = () => {
 
   return (
     <div className="stop-watch">
+      <h1 id="title">Stopwatch</h1>
       <div className="content-timer">
         <button type="button" onClick={startStop}>
           {isRunning ? 'Stop' : 'Start'}

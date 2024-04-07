@@ -9,7 +9,6 @@ function App() {
   return (
     <BrowserRouter>
       <div className="content">
-        <h1 id="title">Chronos</h1>
         <div className="pages">
           <Routes>
             <Route path="/" exact element={<StopWatch />} />

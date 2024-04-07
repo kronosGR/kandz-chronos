@@ -4,5 +4,8 @@
   width: 100%;
 }
 .pages {
-  height: 400px;
+  height: 452px;
+}
+button:hover {
+  cursor: pointer;
 }
