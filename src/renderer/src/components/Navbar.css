@@ -1,0 +1,23 @@
+.navbar {
+  width: 100%;
+  background-color: aliceblue;
+  color: black;
+  height: 51px;
+  display: flex;
+  align-items: center;
+}
+
+.navbar > a {
+  font-size: 1rem;
+  width: 140px;
+  height: 52px;
+  border: 1px solid black;
+  padding-top: 10px;
+  text-decoration: none;
+  color: black;
+  background-color: aliceblue;
+}
+
+.navbar > a:hover {
+  background-color: #c9cfd4;
+}
