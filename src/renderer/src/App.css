@@ -1,42 +1,5 @@
 .content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  text-align: center;
   height: 100%;
   width: 100%;
-}
-
-.content-timer {
-  display: flex;
-  margin: 20px 0;
-}
-
-.content-timer > * {
-  margin: 10px;
-}
-
-button {
-  width: 100px;
-  padding: 10px 20px;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-#timer {
-  border: 1px solid white;
-  padding: 0 10px;
-  display: flex;
-  align-items: center;
-}
-
-#empty-list {
-  margin-top: 10px;
-  background-color: red;
-  color: white;
-}
-
-.timers {
-  width: 100%;
-  text-align: center;
-  overflow-y: auto;
 }
