@@ -19,6 +19,27 @@ const Timer = () => {
     setTime(Number(hours * 3600) + Number(mins * 60) + Number(secs))
   }
 
+  const handleOnChange = (e, item) => {
+    console.log(item)
+    switch (item) {
+      case 'hours':
+        setHours(e.target.value)
+        localStorage.setItem('hours', e.target.value)
+        break
+      case 'mins':
+        setMins(e.target.value)
+        localStorage.setItem('min', e.target.value)
+        break
+      case 'secs':
+        setSecs(e.target.value)
+        localStorage.setItem('secs', e.target.value)
+        break
+
+      default:
+        break
+    }
+  }
+
   const TimeToString = ({ timer }) => {
     let time = timer
     const hours = Math.floor(time / 3600)
@@ -49,6 +70,13 @@ const Timer = () => {
       return () => clearInterval(intervalId)
     }
   }, [isStarted, isPaused])
+
+  useEffect(() => {
+    setHours(localStorage.getItem('hours') || 0)
+    setMins(localStorage.getItem('mins') || 0)
+    setSecs(localStorage.getItem('secs') || 0)
+  }, [])
+
   return (
     <div>
       <h1>Timer</h1>
@@ -60,7 +88,7 @@ const Timer = () => {
             type="number"
             value={hours}
             min="0"
-            onChange={(e) => setHours(e.target.value)}
+            onChange={(e) => handleOnChange(e, 'hours')}
           />
         </div>
         <div className="group-item">
@@ -71,7 +99,7 @@ const Timer = () => {
             value={mins}
             max="59"
             min="0"
-            onChange={(e) => setMins(e.target.value)}
+            onChange={(e) => handleOnChange(e, 'mins')}
           />
         </div>
         <div className="group-item">
@@ -82,7 +110,7 @@ const Timer = () => {
             value={secs}
             min="0"
             max="59"
-            onChange={(e) => setSecs(e.target.value)}
+            onChange={(e) => handleOnChange(e, 'secs')}
           />
         </div>
       </div>
