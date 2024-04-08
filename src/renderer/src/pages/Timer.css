@@ -12,6 +12,8 @@
 .group-input {
   width: 80px;
   text-align: center;
+  padding: 10px;
+  font-size: 1.1rem;
 }
 
 .group-item > [type='number']::-webkit-inner-spin-button,
