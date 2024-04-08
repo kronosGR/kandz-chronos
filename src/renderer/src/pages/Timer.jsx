@@ -87,7 +87,7 @@ const Timer = () => {
         </div>
       </div>
       <div className="buttons">
-        <button type="button" onClick={startTimer}>
+        <button type="button" onClick={startTimer} disabled={hours == 0 && mins == 0 && secs == 0}>
           {isStarted ? 'Stop' : 'Start'}
         </button>
         <button type="button" onClick={() => setIsPaused(!isPaused)} disabled={!isStarted}>
