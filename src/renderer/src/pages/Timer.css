@@ -21,4 +21,10 @@
 
 .buttons > button {
   width: 120px;
+  margin: 10px;
+}
+
+.timer-text {
+  font-size: 3rem;
+  margin-top: 3rem;
 }

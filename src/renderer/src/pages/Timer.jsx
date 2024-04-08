@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 
 import './Timer.css'
+import alarm from '../assets/alarm.mp3'
 const Timer = () => {
+  const audio = new Audio(alarm)
   const [hours, setHours] = useState(0)
   const [mins, setMins] = useState(0)
   const [secs, setSecs] = useState(0)
@@ -10,9 +12,24 @@ const Timer = () => {
   const [isPaused, setIsPaused] = useState(false)
 
   const startTimer = () => {
+    audio.pause()
+    audio.currentTime = 0
     setIsPaused(false)
     setIsStarted(!isStarted)
     setTime(Number(hours * 3600) + Number(mins * 60) + Number(secs))
+  }
+
+  const TimeToString = ({ timer }) => {
+    let time = timer
+    const hours = Math.floor(time / 3600)
+    const mins = Math.floor((time % 3600) / 60)
+    const secs = Math.floor(time % 60)
+
+    return (
+      <div className="timer-text">
+        {hours}:{mins.toString().padStart(2, '0')}:{secs.toString().padStart(2, '0')}
+      </div>
+    )
   }
 
   useEffect(() => {
@@ -20,8 +37,11 @@ const Timer = () => {
       let intervalId = setInterval(() => {
         setTime((time) => {
           if (time === 0) {
+            audio.volume = 1
+            audio.play()
             clearInterval(intervalId)
             setIsStarted(false)
+
             return 0
           } else return time - 1
         })
@@ -70,11 +90,13 @@ const Timer = () => {
         <button type="button" onClick={startTimer}>
           {isStarted ? 'Stop' : 'Start'}
         </button>
-        <button type="button" onClick={() => setIsPaused(!isPaused)}>
+        <button type="button" onClick={() => setIsPaused(!isPaused)} disabled={!isStarted}>
           {isPaused ? 'Unpause' : 'Pause'}
         </button>
       </div>
-      <div className="timer">{time}</div>
+      <div className="timer">
+        <TimeToString timer={time} />
+      </div>
     </div>
   )
 }
