@@ -1,6 +1,8 @@
 # kandz-chronos
 
-An Electron application with React
+A simple stopwatch and timer app
+![stopwatch](Screenshot1.png)
+![timer](Screenshot2.png)
 
 ## Recommended IDE Setup
 

@@ -12,7 +12,8 @@ function App() {
         <div className="pages">
           <Routes>
             <Route path="/" exact element={<StopWatch />} />
-            <Route path="/timer" element={<Timer />} />
+            <Route path="/timer" exact element={<Timer />} />
+            <Route path="*" element={<StopWatch />} />
           </Routes>
         </div>
         <Navbar />

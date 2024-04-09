@@ -32,6 +32,9 @@ button {
   margin-top: 10px;
   background-color: red;
   color: white;
+  font-weight: normal;
+  font-size: 1rem;
+  width: 140px;
 }
 
 .timers {

@@ -20,7 +20,6 @@ const Timer = () => {
   }
 
   const handleOnChange = (e, item) => {
-    console.log(item)
     switch (item) {
       case 'hours':
         setHours(e.target.value)
@@ -28,7 +27,7 @@ const Timer = () => {
         break
       case 'mins':
         setMins(e.target.value)
-        localStorage.setItem('min', e.target.value)
+        localStorage.setItem('mins', e.target.value)
         break
       case 'secs':
         setSecs(e.target.value)
@@ -58,6 +57,9 @@ const Timer = () => {
       let intervalId = setInterval(() => {
         setTime((time) => {
           if (time === 0) {
+            new window.Notification('Chronos - Timer', {
+              body: `${hours}:${mins < 10 ? '0' + mins : mins}:${secs < 10 ? '0' + secs : secs} timer ended`
+            })
             audio.volume = 1
             audio.play()
             clearInterval(intervalId)
